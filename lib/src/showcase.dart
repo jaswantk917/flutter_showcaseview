@@ -99,6 +99,9 @@ class Showcase extends StatefulWidget {
   /// Custom tooltip widget when [Showcase.withWidget] is used.
   final Widget? container;
 
+  /// Custom static tooltip widget when [Showcase.withWidget] is used.
+  final Widget? staticContainer;
+
   /// Defines background color for tooltip widget.
   ///
   /// Default to [Colors.white]
@@ -253,53 +256,54 @@ class Showcase extends StatefulWidget {
   /// Defaults to 7.
   final double toolTipSlideEndDistance;
 
-  const Showcase({
-    required this.key,
-    required this.description,
-    required this.child,
-    this.title,
-    this.titleAlignment = TextAlign.start,
-    this.descriptionAlignment = TextAlign.start,
-    this.targetShapeBorder = const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-    ),
-    this.overlayColor = Colors.black45,
-    this.overlayOpacity = 0.75,
-    this.titleTextStyle,
-    this.descTextStyle,
-    this.tooltipBackgroundColor = Colors.white,
-    this.textColor = Colors.black,
-    this.scrollLoadingWidget = const CircularProgressIndicator(
-      valueColor: AlwaysStoppedAnimation(Colors.white),
-    ),
-    this.showArrow = true,
-    this.onTargetClick,
-    this.disposeOnTap,
-    this.movingAnimationDuration = const Duration(milliseconds: 2000),
-    this.disableMovingAnimation,
-    this.disableScaleAnimation,
-    this.tooltipPadding =
-        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-    this.onToolTipClick,
-    this.targetPadding = EdgeInsets.zero,
-    this.blurValue,
-    this.targetBorderRadius,
-    this.onTargetLongPress,
-    this.onTargetDoubleTap,
-    this.tooltipBorderRadius,
-    this.disableDefaultTargetGestures = false,
-    this.scaleAnimationDuration = const Duration(milliseconds: 300),
-    this.scaleAnimationCurve = Curves.easeIn,
-    this.scaleAnimationAlignment,
-    this.tooltipPosition,
-    this.titlePadding,
-    this.descriptionPadding,
-    this.titleTextDirection,
-    this.descriptionTextDirection,
-    this.onBarrierClick,
-    this.disableBarrierInteraction = false,
-    this.toolTipSlideEndDistance = 7,
-  })  : height = null,
+  const Showcase(
+      {required this.key,
+      required this.description,
+      required this.child,
+      this.title,
+      this.titleAlignment = TextAlign.start,
+      this.descriptionAlignment = TextAlign.start,
+      this.targetShapeBorder = const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      this.overlayColor = Colors.black45,
+      this.overlayOpacity = 0.75,
+      this.titleTextStyle,
+      this.descTextStyle,
+      this.tooltipBackgroundColor = Colors.white,
+      this.textColor = Colors.black,
+      this.scrollLoadingWidget = const CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation(Colors.white),
+      ),
+      this.showArrow = true,
+      this.onTargetClick,
+      this.disposeOnTap,
+      this.movingAnimationDuration = const Duration(milliseconds: 2000),
+      this.disableMovingAnimation,
+      this.disableScaleAnimation,
+      this.tooltipPadding =
+          const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      this.onToolTipClick,
+      this.targetPadding = EdgeInsets.zero,
+      this.blurValue,
+      this.targetBorderRadius,
+      this.onTargetLongPress,
+      this.onTargetDoubleTap,
+      this.tooltipBorderRadius,
+      this.disableDefaultTargetGestures = false,
+      this.scaleAnimationDuration = const Duration(milliseconds: 300),
+      this.scaleAnimationCurve = Curves.easeIn,
+      this.scaleAnimationAlignment,
+      this.tooltipPosition,
+      this.titlePadding,
+      this.descriptionPadding,
+      this.titleTextDirection,
+      this.descriptionTextDirection,
+      this.onBarrierClick,
+      this.disableBarrierInteraction = false,
+      this.toolTipSlideEndDistance = 7,
+      this.staticContainer})
+      : height = null,
         width = null,
         container = null,
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
@@ -340,7 +344,8 @@ class Showcase extends StatefulWidget {
     this.onBarrierClick,
     this.disableBarrierInteraction = false,
     this.toolTipSlideEndDistance = 7,
-  })  : showArrow = false,
+  })  : staticContainer = null,
+        showArrow = false,
         onToolTipClick = null,
         scaleAnimationDuration = const Duration(milliseconds: 300),
         scaleAnimationCurve = Curves.decelerate,
@@ -632,6 +637,7 @@ class _ShowcaseState extends State<Showcase> {
             toolTipSlideEndDistance: widget.toolTipSlideEndDistance,
           ),
         ],
+        if (widget.staticContainer != null) widget.staticContainer!,
       ],
     );
   }
