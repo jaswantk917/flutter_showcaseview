@@ -22,7 +22,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../showcaseview.dart';
+import '../showcaseview_skipbutton.dart';
 import 'extension.dart';
 
 class ShowCaseWidget extends StatefulWidget {
