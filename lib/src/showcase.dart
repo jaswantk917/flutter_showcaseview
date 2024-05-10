@@ -637,7 +637,7 @@ class _ShowcaseState extends State<Showcase> {
             toolTipSlideEndDistance: widget.toolTipSlideEndDistance,
           ),
         ],
-         widget.staticContainer ?? Positioned(
+         widget.staticContainer??Positioned(
         top: MediaQuery.of(context).padding.top + kMinInteractiveDimension,
         right: 24,
         child: ElevatedButton(
